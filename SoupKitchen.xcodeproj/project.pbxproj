@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2541B29E27CACAE90067F05D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541B29D27CACAE90067F05D /* main.swift */; };
+		2541B2AA27CAD2BA0067F05D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 2541B2A927CAD2BA0067F05D /* SwiftSoup */; };
+		2541B2AC27CAD33A0067F05D /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541B2AB27CAD33A0067F05D /* Kitchen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		2541B29A27CACAE90067F05D /* SoupKitchen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SoupKitchen; sourceTree = BUILT_PRODUCTS_DIR; };
 		2541B29D27CACAE90067F05D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2541B2A727CAD2490067F05D /* h2hArticle.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = h2hArticle.html; sourceTree = "<group>"; };
+		2541B2AB27CAD33A0067F05D /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2541B2AA27CAD2BA0067F05D /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,9 +62,19 @@
 		2541B29C27CACAE90067F05D /* SoupKitchen */ = {
 			isa = PBXGroup;
 			children = (
+				2541B2AD27CAD45F0067F05D /* Resources */,
 				2541B29D27CACAE90067F05D /* main.swift */,
+				2541B2AB27CAD33A0067F05D /* Kitchen.swift */,
 			);
 			path = SoupKitchen;
+			sourceTree = "<group>";
+		};
+		2541B2AD27CAD45F0067F05D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2541B2A727CAD2490067F05D /* h2hArticle.html */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +93,9 @@
 			dependencies = (
 			);
 			name = SoupKitchen;
+			packageProductDependencies = (
+				2541B2A927CAD2BA0067F05D /* SwiftSoup */,
+			);
 			productName = SoupKitchen;
 			productReference = 2541B29A27CACAE90067F05D /* SoupKitchen */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 2541B29127CACAE80067F05D;
+			packageReferences = (
+				2541B2A827CAD2BA0067F05D /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 2541B29B27CACAE90067F05D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2541B2AC27CAD33A0067F05D /* Kitchen.swift in Sources */,
 				2541B29E27CACAE90067F05D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +308,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2541B2A827CAD2BA0067F05D /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2541B2A927CAD2BA0067F05D /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2541B2A827CAD2BA0067F05D /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2541B29227CACAE90067F05D /* Project object */;
 }
