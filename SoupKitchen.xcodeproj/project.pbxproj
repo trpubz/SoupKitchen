@@ -28,7 +28,7 @@
 		2541B29A27CACAE90067F05D /* SoupKitchen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SoupKitchen; sourceTree = BUILT_PRODUCTS_DIR; };
 		2541B29D27CACAE90067F05D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2541B2A727CAD2490067F05D /* h2hArticle.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = h2hArticle.html; sourceTree = "<group>"; };
-		2541B2AB27CAD33A0067F05D /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
+		2541B2AB27CAD33A0067F05D /* Kitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
