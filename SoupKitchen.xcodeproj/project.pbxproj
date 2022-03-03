@@ -10,6 +10,10 @@
 		2541B29E27CACAE90067F05D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541B29D27CACAE90067F05D /* main.swift */; };
 		2541B2AA27CAD2BA0067F05D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 2541B2A927CAD2BA0067F05D /* SwiftSoup */; };
 		2541B2AC27CAD33A0067F05D /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2541B2AB27CAD33A0067F05D /* Kitchen.swift */; };
+		B34A708927D075A8003CD5D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34A708827D075A8003CD5D1 /* Extensions.swift */; };
+		B34A708B27D07B82003CD5D1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34A708A27D07B82003CD5D1 /* Player.swift */; };
+		B34A708E27D08782003CD5D1 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34A708D27D08782003CD5D1 /* Encoder.swift */; };
+		B34A709127D08A2B003CD5D1 /* SwiftJSONFormatter in Frameworks */ = {isa = PBXBuildFile; productRef = B34A709027D08A2B003CD5D1 /* SwiftJSONFormatter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +33,9 @@
 		2541B29D27CACAE90067F05D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2541B2A727CAD2490067F05D /* h2hArticle.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = h2hArticle.html; sourceTree = "<group>"; };
 		2541B2AB27CAD33A0067F05D /* Kitchen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
+		B34A708827D075A8003CD5D1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B34A708A27D07B82003CD5D1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Player.swift; path = SoupKitchen/Player.swift; sourceTree = SOURCE_ROOT; };
+		B34A708D27D08782003CD5D1 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2541B2AA27CAD2BA0067F05D /* SwiftSoup in Frameworks */,
+				B34A709127D08A2B003CD5D1 /* SwiftJSONFormatter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +70,11 @@
 		2541B29C27CACAE90067F05D /* SoupKitchen */ = {
 			isa = PBXGroup;
 			children = (
-				2541B2AD27CAD45F0067F05D /* Resources */,
 				2541B29D27CACAE90067F05D /* main.swift */,
 				2541B2AB27CAD33A0067F05D /* Kitchen.swift */,
+				B34A708A27D07B82003CD5D1 /* Player.swift */,
+				B34A708C27D0875A003CD5D1 /* Helpers */,
+				2541B2AD27CAD45F0067F05D /* Resources */,
 			);
 			path = SoupKitchen;
 			sourceTree = "<group>";
@@ -75,6 +85,15 @@
 				2541B2A727CAD2490067F05D /* h2hArticle.html */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B34A708C27D0875A003CD5D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B34A708827D075A8003CD5D1 /* Extensions.swift */,
+				B34A708D27D08782003CD5D1 /* Encoder.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +114,7 @@
 			name = SoupKitchen;
 			packageProductDependencies = (
 				2541B2A927CAD2BA0067F05D /* SwiftSoup */,
+				B34A709027D08A2B003CD5D1 /* SwiftJSONFormatter */,
 			);
 			productName = SoupKitchen;
 			productReference = 2541B29A27CACAE90067F05D /* SoupKitchen */;
@@ -126,6 +146,7 @@
 			mainGroup = 2541B29127CACAE80067F05D;
 			packageReferences = (
 				2541B2A827CAD2BA0067F05D /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				B34A708F27D08A2B003CD5D1 /* XCRemoteSwiftPackageReference "SwiftJSONFormatter" */,
 			);
 			productRefGroup = 2541B29B27CACAE90067F05D /* Products */;
 			projectDirPath = "";
@@ -141,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34A708B27D07B82003CD5D1 /* Player.swift in Sources */,
 				2541B2AC27CAD33A0067F05D /* Kitchen.swift in Sources */,
+				B34A708E27D08782003CD5D1 /* Encoder.swift in Sources */,
 				2541B29E27CACAE90067F05D /* main.swift in Sources */,
+				B34A708927D075A8003CD5D1 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +342,14 @@
 				kind = branch;
 			};
 		};
+		B34A708F27D08A2B003CD5D1 /* XCRemoteSwiftPackageReference "SwiftJSONFormatter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luin/SwiftJSONFormatter.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -325,6 +357,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2541B2A827CAD2BA0067F05D /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		B34A709027D08A2B003CD5D1 /* SwiftJSONFormatter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34A708F27D08A2B003CD5D1 /* XCRemoteSwiftPackageReference "SwiftJSONFormatter" */;
+			productName = SwiftJSONFormatter;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
