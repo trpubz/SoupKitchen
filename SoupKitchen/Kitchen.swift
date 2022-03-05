@@ -8,21 +8,22 @@
 import Foundation
 import SwiftSoup
 import SwiftJSONFormatter
+import SwiftyJSON
 
 struct SoupStew {
-    var jsonString: String = ""
+    var jsonData: Data = Data()
     
     init () {
         makeStew()
-        print(SwiftJSONFormatter.beautify(jsonString))
+        print(String(data: jsonData, encoding: .utf8) ?? "brokey-broke whalburg")
     }
     
     mutating func makeStew() {
-        let file = URL(fileURLWithPath: "/Users/Shared/h2hArticle.html")
+        let ioHelper: IOModule = IOModule()
+        let html = ioHelper.loadHTML()
+        print("Successful string load")
 
         do {
-            let html: String = try String(contentsOf: file, encoding: .utf8)
-            print("Successful string conversion")
             let doc: Document = try SwiftSoup.parseBodyFragment(html)
             print("Successful doc conversion")
             // gets all asides indside doc
@@ -33,19 +34,29 @@ struct SoupStew {
             print("Successful 1st table retrieval.")
             // There is only 1 tbody so only 1 element; child members are table rows (tr)
             let tRows: Elements = try top300Table.select("tbody > tr")
+            // Elements are a collection of children items and casting the object to an array allows iteration
             for row in tRows.array() {
+                // player name lives in the 'a' tag
                 let player = try row.getElementsByTag("a")
                 let strName = try player.text()
+                // player id is found in the hyperlink; .slice is a String extension
                 let id = try player.attr("href").slice(from: "id/", to: "/")!
+                // player team is 4th column/3rd index
                 let tm = try row.child(3).text()
+                // player position is the 5th column/4th index
                 let pos = try row.child(4).text()
                 let plyr: Player = Player(id: id,
                                           name: strName,
                                           tm: tm,
                                           pos: pos)
-                let encodedData = try JSONEncoder().encode(plyr)
-                jsonString.append(contentsOf: String(data: encodedData,
-                                                     encoding: .utf8)!)
+                let encoder = JSONEncoder()
+                // setting encoder properties; unsure how .sortedKeys works
+                encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
+                let encodedData = try encoder.encode(plyr)
+                // logging print
+                jsonData.append(encodedData)
+                print(String(data: jsonData, encoding: .utf8)!)
+
             }
         } catch Exception.Error(type: let type,
                                 Message: let message) {
@@ -54,5 +65,9 @@ struct SoupStew {
         } catch {
             print("ERROR")
         }
+        
+//        let jsonObj = SwiftJSONFormatter.beautify(jsonString).data(using: .utf8)!
+        ioHelper.saveJSON(jsonData: jsonData)
+        print("successfully saved data")
     }
 }
