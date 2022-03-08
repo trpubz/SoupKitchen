@@ -22,14 +22,13 @@ struct SoupStew {
     mutating func makeStew() {
         let ioHelper: IOModule = IOModule()
         let html = ioHelper.loadHTML()
-        print("Successful string load")
+//        print("Successful string load")
 
         do {
             let doc: Document = try SwiftSoup.parseBodyFragment(html)
             // gets all asides indside doc
             let asides: Elements = try doc.getElementsByTag("aside")
             // The 1st aside is the Top 300 Table.  We want everything but Top 300.
-//            let top300Table: Elements = try aside.first()!.select("table")
             // There is only 1 tbody so only 1 element; child members are table rows (tr)
             for posTable in asides.array() {
                 // first table is Top300; don't need
@@ -49,7 +48,7 @@ struct SoupStew {
                 }
                 
                 // determines which table the loop is currently in
-                var playerPostion: String = determinePositionTable(posTable: posTable) ?? "No Position"
+                let playerPostion: String = determinePositionTable(posTable: posTable) ?? "No Position"
                 
                 let tRows: Elements = try posTable.select("tbody > tr")
                 for row in tRows.array() {
@@ -58,16 +57,13 @@ struct SoupStew {
                     // player id is found in the hyperlink; .slice is a String extension
                     let id = try player.attr("href").slice(from: "id/", to: "/")!
                     // if the player already exists in the players array then continue onto the next row
-                    if players.contains(where: {$0.id == id}) {
-                        continue
-                        
-                    }
+                    if players.contains(where: {$0.id == id}) { continue }
                     let strName = try player.text()
-                    // player team is 4th column/3rd index
                     let tm = try row.child(colTm).text()
-                    // player position is the 5th column/4th index
+                    // other positions columns is either "" or not
                     var otherPositions: String = try row.child(colOtherPos).text()
                     if otherPositions != "" {
+                        // this tactic add a '/' to the front of the string
                         otherPositions = "/\(otherPositions)"
                     }
                     let plyr: Player = Player(id: id,
@@ -75,7 +71,7 @@ struct SoupStew {
                                               tm: tm,
                                               pos: playerPostion + otherPositions)
                     players.append(plyr)
-                    print(plyr)
+//                    print(plyr)
                 }
             }
         } catch Exception.Error(type: let type,
@@ -89,9 +85,8 @@ struct SoupStew {
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
         do {
             let encodedData = try encoder.encode(players)
-            // logging print
             jsonData.append(encodedData)
-            print(String(data: jsonData, encoding: .utf8)!)
+//            print(String(data: jsonData, encoding: .utf8)!)
         } catch { print("Encoder Error") }
         
         ioHelper.saveJSON(jsonData: jsonData)
